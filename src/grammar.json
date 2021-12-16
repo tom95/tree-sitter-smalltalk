@@ -298,6 +298,10 @@
         }
       ]
     },
+    "character": {
+      "type": "PATTERN",
+      "value": "\\$(\\s|.)"
+    },
     "identifier": {
       "type": "PATTERN",
       "value": "[A-Za-z_]+"
@@ -517,6 +521,30 @@
         }
       ]
     },
+    "true": {
+      "type": "STRING",
+      "value": "true"
+    },
+    "false": {
+      "type": "STRING",
+      "value": "false"
+    },
+    "thisContext": {
+      "type": "STRING",
+      "value": "thisContext"
+    },
+    "self": {
+      "type": "STRING",
+      "value": "self"
+    },
+    "super": {
+      "type": "STRING",
+      "value": "super"
+    },
+    "nil": {
+      "type": "STRING",
+      "value": "nil"
+    },
     "primary": {
       "type": "CHOICE",
       "members": [
@@ -546,11 +574,39 @@
         },
         {
           "type": "SYMBOL",
+          "name": "character"
+        },
+        {
+          "type": "SYMBOL",
           "name": "symbol"
         },
         {
           "type": "SYMBOL",
           "name": "block"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "true"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "false"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "thisContext"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "self"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "super"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "nil"
         }
       ]
     },

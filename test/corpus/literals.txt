@@ -104,3 +104,57 @@ test
     (statement
         (symbol)))
 
+
+=================
+Character
+=================
+test
+
+    $a
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (character)))
+
+=================
+Space Character
+=================
+test
+
+    $ 
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (character)))
+
+=================
+Dollar Character
+=================
+test
+
+    $$
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (character)))
+
+=================
+Return Character
+=================
+test
+
+    $
+
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (character)))
+

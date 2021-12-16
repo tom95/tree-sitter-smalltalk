@@ -44,6 +44,7 @@ module.exports = grammar({
           seq("'", /[^']*/, "'")
         )
       ),
+    character: ($) => /\$(\s|.)/,
     identifier: ($) => /[A-Za-z_]+/,
     binary_operator: ($) => new RegExp(`[${binary_chars}]+`),
 
@@ -65,6 +66,13 @@ module.exports = grammar({
         "]"
       ),
 
+    true: ($) => "true",
+    false: ($) => "false",
+    thisContext: ($) => "thisContext",
+    self: ($) => "self",
+    super: ($) => "super",
+    nil: ($) => "nil",
+
     primary: ($) =>
       choice(
         $.identifier,
@@ -73,8 +81,15 @@ module.exports = grammar({
         $.parenthesized_expression,
         $.number,
         $.string,
+        $.character,
         $.symbol,
-        $.block
+        $.block,
+        $.true,
+        $.false,
+        $.thisContext,
+        $.self,
+        $.super,
+        $.nil
       ),
 
     expression: ($) =>
