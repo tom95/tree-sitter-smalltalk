@@ -14,7 +14,6 @@ test
             (unary_message (identifier))
             (unary_message (identifier)))))
 
-
 =================
 Cascade to Binary Messages
 =================

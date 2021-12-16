@@ -4,12 +4,19 @@ module.exports = grammar({
   name: "smalltalk",
 
   supertypes: ($) => [$.selector, $.expression, $.primary],
-  conflicts: ($) => [[$.keyword_message, $.keyword_message]],
+  conflicts: ($) => [
+    [$.keyword_message, $.keyword_message],
+    [$.temporaries, $.primary],
+    [$.temporaries, $.temporaries],
+  ],
   inline: ($) => [$.keyword_part],
   word: ($) => $.keyword,
 
   rules: {
-    method: ($) => seq($.selector, sep(optional($.statement), ".")),
+    method: ($) =>
+      seq($.selector, optional($.temporaries), sep(optional($.statement), ".")),
+
+    temporaries: ($) => prec.dynamic(10, seq("|", repeat($.identifier), "|")),
 
     selector: ($) =>
       choice($.unary_selector, $.binary_selector, $.keyword_selector),
@@ -40,11 +47,23 @@ module.exports = grammar({
     identifier: ($) => /[A-Za-z_]+/,
     binary_operator: ($) => new RegExp(`[${binary_chars}]+`),
 
-    statement: ($) => $.expression,
+    statement: ($) => choice($.expression, $.return),
+    return: ($) => seq("^", $.expression),
 
     dynamic_array: ($) => seq("{", sep1($.expression, "."), optional("."), "}"),
     byte_array: ($) => seq("#[", repeat($.number), "]"),
     parenthesized_expression: ($) => seq("(", $.expression, ")"),
+
+    block_argument: ($) => /:[A-Za-z_]+/,
+    block: ($) =>
+      seq(
+        "[",
+        optional(seq(repeat($.block_argument), "|")),
+        optional($.temporaries),
+        sep($.statement, "."),
+        optional("."),
+        "]"
+      ),
 
     primary: ($) =>
       choice(
@@ -54,7 +73,8 @@ module.exports = grammar({
         $.parenthesized_expression,
         $.number,
         $.string,
-        $.symbol
+        $.symbol,
+        $.block
       ),
 
     expression: ($) =>

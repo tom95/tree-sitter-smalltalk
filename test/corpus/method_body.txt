@@ -57,3 +57,57 @@ test: abc
     (statement (identifier))
     (statement (identifier))
     (statement (identifier)))
+
+=================
+With temporaries
+=================
+test: abc
+
+    | a b |
+    hello.
+    abc..
+    def...
+---
+
+(method
+    (keyword_selector (keyword) (identifier))
+    (temporaries (identifier) (identifier))
+    (statement (identifier))
+    (statement (identifier))
+    (statement (identifier)))
+
+=================
+With empty temporaries
+=================
+test: abc
+
+    | |
+    hello.
+    abc..
+    def...
+---
+
+(method
+    (keyword_selector (keyword) (identifier))
+    (temporaries)
+    (statement (identifier))
+    (statement (identifier))
+    (statement (identifier)))
+
+=================
+With Return
+=================
+test: abc
+
+    | |
+    hello.
+    abc..
+    ^ def
+---
+
+(method
+    (keyword_selector (keyword) (identifier))
+    (temporaries)
+    (statement (identifier))
+    (statement (identifier))
+    (statement (return (identifier))))
