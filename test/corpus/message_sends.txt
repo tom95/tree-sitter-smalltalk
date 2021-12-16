@@ -166,3 +166,20 @@ test
             (binary_message (identifier) (binary_operator) (identifier))
             (keyword)
             (binary_message (identifier) (binary_operator) (identifier)))))
+
+=================
+Nested Keyword Message with Parenthesis
+=================
+test
+
+    abc with: (def do: ghi)
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (keyword_message
+            (identifier)
+            (keyword)
+            (parenthesized_expression
+                (keyword_message (identifier) (keyword) (identifier))))))

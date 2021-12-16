@@ -1,0 +1,33 @@
+=================
+Cascade to Unary Messages
+=================
+test
+
+    a abc; def
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (cascade
+            (identifier)
+            (unary_message (identifier))
+            (unary_message (identifier)))))
+
+
+=================
+Cascade to Binary Messages
+=================
+test
+
+    a + 3; + 5
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (cascade
+            (identifier)
+            (binary_message (identifier))
+            (binary_message (identifier)))))
+

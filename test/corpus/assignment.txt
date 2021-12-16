@@ -1,0 +1,88 @@
+=================
+Assignment to Primary
+=================
+test
+
+    abc := def
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (assignment
+            (identifier)
+            (identifier))))
+
+=================
+Assignment to Binary Message
+=================
+test
+
+    abc := def + ghi
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (assignment
+            (identifier)
+            (binary_message
+                (identifier)
+                (binary_operator)
+                (identifier)))))
+
+=================
+Nested Assignments
+=================
+test
+
+    abc := def := ghi
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (assignment
+            (identifier)
+            (assignment
+                (identifier)
+                (identifier)))))
+
+=================
+Assignment to Keyword Message
+=================
+test
+
+    abc := def do: ghi with: jkl
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (assignment
+            (identifier)
+            (keyword_message
+                (identifier)
+                (keyword)
+                (identifier)
+                (keyword)
+                (identifier)))))
+
+=================
+Assignment in Keyword Message
+=================
+test
+
+    abc do: (a := test)
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (keyword_message
+            (identifier)
+            (keyword)
+            (parenthesized_expression
+                (assignment
+                    (identifier)
+                    (identifier))))))

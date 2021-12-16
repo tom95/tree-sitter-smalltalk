@@ -1,7 +1,9 @@
+const binary_chars = "+\\-/*~<>=@,%|&?!";
+
 module.exports = grammar({
   name: "smalltalk",
 
-  supertypes: ($) => [$.selector, $.expression],
+  supertypes: ($) => [$.selector, $.expression, $.primary],
   conflicts: ($) => [[$.keyword_message, $.keyword_message]],
   inline: ($) => [$.keyword_part],
   word: ($) => $.keyword,
@@ -21,19 +23,47 @@ module.exports = grammar({
     keyword_message: ($) =>
       prec.dynamic(-1, seq($.expression, repeat1($.keyword_part))),
     keyword_part: ($) => seq($.keyword, $.expression),
+    assignment: ($) => prec.left(-2, seq($.identifier, ":=", $.expression)),
 
     keyword: ($) => /[A-Za-z_]+:/,
+    // TODO: base should determine valid digits (need custom scanner)
+    number: ($) => /([0-9]+r)?[0-9]+/,
+    string: ($) => seq("'", /[^']*/, "'"),
+    symbol: ($) =>
+      seq(
+        "#",
+        choice(
+          new RegExp(`[A-Za-z0-9_:]+|[${binary_chars}]+`),
+          seq("'", /[^']*/, "'")
+        )
+      ),
     identifier: ($) => /[A-Za-z_]+/,
-    binary_operator: ($) => /[+\-*/]+/,
+    binary_operator: ($) => new RegExp(`[${binary_chars}]+`),
 
     statement: ($) => $.expression,
 
-    expression: ($) =>
+    dynamic_array: ($) => seq("{", sep1($.expression, "."), optional("."), "}"),
+    byte_array: ($) => seq("#[", repeat($.number), "]"),
+    parenthesized_expression: ($) => seq("(", $.expression, ")"),
+
+    primary: ($) =>
       choice(
         $.identifier,
+        $.dynamic_array,
+        $.byte_array,
+        $.parenthesized_expression,
+        $.number,
+        $.string,
+        $.symbol
+      ),
+
+    expression: ($) =>
+      choice(
         $.unary_message,
+        $.assignment,
         $.binary_message,
-        $.keyword_message
+        $.keyword_message,
+        $.primary
       ),
   },
 });

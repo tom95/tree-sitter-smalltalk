@@ -1,0 +1,106 @@
+=================
+String
+=================
+test
+
+    'abc'
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (string)))
+
+=================
+Empty String
+=================
+test
+
+    ''
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (string)))
+
+=================
+Number
+=================
+test
+
+    123
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (number)))
+
+=================
+Number with Base
+=================
+test
+
+    12r123
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (number)))
+
+=================
+Symbol
+=================
+test
+
+    #abc123
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (symbol)))
+
+=================
+Binary Symbol
+=================
+test
+
+    #++-
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (symbol)))
+
+
+=================
+Quoted Symbol
+=================
+test
+
+    #'abc123'
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (symbol)))
+
+
+=================
+Empty Symbol
+=================
+test
+
+    #''
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (symbol)))
+
