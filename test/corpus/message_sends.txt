@@ -1,0 +1,168 @@
+=================
+Unary Message Send
+=================
+test
+
+    abc def
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (unary_message
+            (identifier)
+            (identifier))))
+
+=================
+Binary Message Send
+=================
+test
+
+    abc + def
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (binary_message
+            (identifier)
+            (binary_operator) (identifier))))
+
+=================
+Single Keyword Message Send
+=================
+test
+
+    abc with: def
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (keyword_message
+            (identifier)
+            (keyword) (identifier))))
+
+=================
+Unary in Binary
+=================
+test
+
+    abc + def ghi
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (binary_message
+            (identifier)
+            (binary_operator)
+            (unary_message (identifier) (identifier)))))
+
+=================
+Nested Binary
+=================
+test
+
+    abc + def + ghi + jkl
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (binary_message
+            (binary_message
+                (binary_message
+                    (identifier)
+                    (binary_operator)
+                    (identifier))
+                (binary_operator)
+                (identifier))
+            (binary_operator)
+            (identifier))))
+
+=================
+Unary in Binary, unary first
+=================
+test
+
+    abc ghi + def
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (binary_message
+            (unary_message (identifier) (identifier))
+            (binary_operator)
+            (identifier))))
+
+=================
+Multiple Keyword Messages
+=================
+test
+
+    abc with: def do: ghi
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (keyword_message
+            (identifier)
+            (keyword)
+            (identifier)
+            (keyword)
+            (identifier))))
+
+=================
+Binary in Keyword Message
+=================
+test
+
+    abc with: def + ghi
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (keyword_message
+            (identifier)
+            (keyword)
+            (binary_message (identifier) (binary_operator) (identifier)))))
+
+=================
+Multiple Sends in Keyword Message
+=================
+test
+
+    abc with: def + ghi do: abc
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (keyword_message
+            (identifier)
+            (keyword)
+            (binary_message (identifier) (binary_operator) (identifier))
+            (keyword)
+            (identifier))))
+
+=================
+Multiple Binary Sends in Keyword Message
+=================
+test
+
+    abc with: def + ghi do: abc + tst
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (keyword_message
+            (identifier)
+            (keyword)
+            (binary_message (identifier) (binary_operator) (identifier))
+            (keyword)
+            (binary_message (identifier) (binary_operator) (identifier)))))

@@ -1,0 +1,59 @@
+=================
+One statement
+=================
+test: abc
+
+    hello
+---
+
+(method
+    (keyword_selector (keyword) (identifier))
+    (statement (identifier)))
+
+=================
+Multiple statements
+=================
+test: abc
+
+    hello.
+    abc.
+    def
+---
+
+(method
+    (keyword_selector (keyword) (identifier))
+    (statement (identifier))
+    (statement (identifier))
+    (statement (identifier)))
+
+=================
+Multiple statements trailing dot
+=================
+test: abc
+
+    hello.
+    abc.
+    def.
+---
+
+(method
+    (keyword_selector (keyword) (identifier))
+    (statement (identifier))
+    (statement (identifier))
+    (statement (identifier)))
+
+=================
+Multiple trailing dots
+=================
+test: abc
+
+    hello.
+    abc..
+    def...
+---
+
+(method
+    (keyword_selector (keyword) (identifier))
+    (statement (identifier))
+    (statement (identifier))
+    (statement (identifier)))

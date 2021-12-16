@@ -1,0 +1,37 @@
+=================
+Empty Unary Method
+=================
+func
+
+---
+
+(method (unary_selector (identifier)))
+
+=================
+Empty Binary Method
+=================
++ abc
+
+---
+
+(method (binary_selector (binary_operator) (identifier)))
+
+=================
+Empty Keyword Method
+=================
+test: abc
+
+---
+
+(method (keyword_selector (keyword) (identifier)))
+
+=================
+Empty Keyword Method with multiple keywords
+=================
+test: abc with: def and: ghi
+
+---
+
+(method
+    (keyword_selector (keyword) (identifier) (keyword) (identifier) (keyword) (identifier))
+    )
