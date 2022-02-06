@@ -51,7 +51,7 @@ module.exports = grammar({
     statement: ($) => choice($.expression, $.return),
     return: ($) => seq("^", $.expression),
 
-    dynamic_array: ($) => seq("{", sep1($.expression, "."), optional("."), "}"),
+    dynamic_array: ($) => seq("{", sep($.expression, "."), optional("."), "}"),
     byte_array: ($) => seq("#[", repeat($.number), "]"),
     parenthesized_expression: ($) => seq("(", $.expression, ")"),
 
