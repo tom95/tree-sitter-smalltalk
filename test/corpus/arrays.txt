@@ -1,4 +1,18 @@
 =================
+Empty dynamic
+=================
+test
+
+    {}
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+            (dynamic_array)))
+
+
+=================
 Single Element in Dynamic
 =================
 test
