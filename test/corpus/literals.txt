@@ -1,4 +1,30 @@
 =================
+Identifier capitalized
+=================
+test
+
+    SBWatch2
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (identifier)))
+
+=================
+Identifier
+=================
+test
+
+    abc123
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (identifier)))
+
+=================
 String
 =================
 test

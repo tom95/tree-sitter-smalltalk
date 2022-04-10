@@ -244,7 +244,7 @@
     },
     "number": {
       "type": "PATTERN",
-      "value": "([0-9]+r)?[0-9]+|[0-9]+\\.[0-9]*"
+      "value": "([0-9]+r)?[0-9]+|[0-9]+\\.[0-9]+"
     },
     "string": {
       "type": "SEQ",
@@ -304,7 +304,7 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[A-Za-z_]+"
+      "value": "[A-Za-z_][A-Za-z0-9_]*"
     },
     "binary_operator": {
       "type": "PATTERN",
