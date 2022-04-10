@@ -34,7 +34,7 @@ module.exports = grammar({
 
     keyword: ($) => /[A-Za-z_]+:/,
     // TODO: base should determine valid digits (need custom scanner)
-    number: ($) => /([0-9]+r)?[0-9]+/,
+    number: ($) => /([0-9]+r)?[0-9]+|[0-9]+\.[0-9]+/,
     string: ($) => seq("'", /[^']*/, "'"),
     symbol: ($) =>
       seq(
@@ -45,7 +45,7 @@ module.exports = grammar({
         )
       ),
     character: ($) => /\$(\s|.)/,
-    identifier: ($) => /[A-Za-z_]+/,
+    identifier: ($) => /[A-Za-z_][A-Za-z0-9_]*/,
     binary_operator: ($) => new RegExp(`[${binary_chars}]+`),
 
     statement: ($) => choice($.expression, $.return),

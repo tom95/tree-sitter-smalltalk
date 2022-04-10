@@ -51,6 +51,20 @@ test
         (number)))
 
 =================
+Number with Decimal
+=================
+test
+
+    2.3.
+    2.4
+---
+
+(method
+    (unary_selector (identifier))
+    (statement (number))
+    (statement (number)))
+
+=================
 Symbol
 =================
 test

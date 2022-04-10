@@ -634,6 +634,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 18:
       ACCEPT_TOKEN(sym_number);
+      if (lookahead == '.') ADVANCE(19);
       if (lookahead == 'r') ADVANCE(6);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(18);
       END_STATE();
