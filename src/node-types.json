@@ -12,6 +12,10 @@
         "named": true
       },
       {
+        "type": "cascade",
+        "named": true
+      },
+      {
         "type": "keyword_message",
         "named": true
       },
@@ -131,7 +135,18 @@
   {
     "type": "binary_message",
     "named": true,
-    "fields": {},
+    "fields": {
+      "receiver": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -205,6 +220,40 @@
     }
   },
   {
+    "type": "cascade",
+    "named": true,
+    "fields": {
+      "receiver": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_message",
+          "named": true
+        },
+        {
+          "type": "keyword_message",
+          "named": true
+        },
+        {
+          "type": "unary_message",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "dynamic_array",
     "named": true,
     "fields": {},
@@ -222,7 +271,18 @@
   {
     "type": "keyword_message",
     "named": true,
-    "fields": {},
+    "fields": {
+      "receiver": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -357,15 +417,22 @@
   {
     "type": "unary_message",
     "named": true,
-    "fields": {},
+    "fields": {
+      "receiver": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "expression",
-          "named": true
-        },
         {
           "type": "identifier",
           "named": true
@@ -414,6 +481,10 @@
   },
   {
     "type": ":=",
+    "named": false
+  },
+  {
+    "type": ";",
     "named": false
   },
   {

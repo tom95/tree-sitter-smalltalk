@@ -27,6 +27,24 @@ test
     (statement
         (cascade
             (identifier)
-            (binary_message (identifier))
-            (binary_message (identifier)))))
+            (binary_message (binary_operator) (number))
+            (binary_message (binary_operator) (number)))))
+
+=================
+Cascade to Keyword Messages
+=================
+test
+
+    test
+        with: 5;
+        with: 6 and: 7
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (cascade
+            (identifier)
+            (keyword_message (keyword) (number))
+            (keyword_message (keyword) (number) (keyword) (number)))))
 

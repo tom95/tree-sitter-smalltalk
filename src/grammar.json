@@ -148,13 +148,17 @@
     },
     "unary_message": {
       "type": "PREC",
-      "value": 4,
+      "value": 1,
       "content": {
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "expression"
+            "type": "FIELD",
+            "name": "receiver",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
           },
           {
             "type": "SYMBOL",
@@ -170,8 +174,12 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "expression"
+            "type": "FIELD",
+            "name": "receiver",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
           },
           {
             "type": "SYMBOL",
@@ -191,8 +199,12 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "expression"
+            "type": "FIELD",
+            "name": "receiver",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
           },
           {
             "type": "REPEAT1",
@@ -236,6 +248,132 @@
             "name": "expression"
           }
         ]
+      }
+    },
+    "cascade": {
+      "type": "PREC_DYNAMIC",
+      "value": -1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "receiver",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "cascaded_unary"
+                    },
+                    "named": true,
+                    "value": "unary_message"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "cascaded_binary"
+                    },
+                    "named": true,
+                    "value": "binary_message"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "cascaded_keyword"
+                    },
+                    "named": true,
+                    "value": "keyword_message"
+                  }
+                ]
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ";"
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "ALIAS",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "cascaded_unary"
+                          },
+                          "named": true,
+                          "value": "unary_message"
+                        },
+                        {
+                          "type": "ALIAS",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "cascaded_binary"
+                          },
+                          "named": true,
+                          "value": "binary_message"
+                        },
+                        {
+                          "type": "ALIAS",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "cascaded_keyword"
+                          },
+                          "named": true,
+                          "value": "keyword_message"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "cascaded_unary": {
+      "type": "SYMBOL",
+      "name": "identifier"
+    },
+    "cascaded_binary": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "binary_operator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        }
+      ]
+    },
+    "cascaded_keyword": {
+      "type": "PREC_DYNAMIC",
+      "value": -1,
+      "content": {
+        "type": "REPEAT1",
+        "content": {
+          "type": "SYMBOL",
+          "name": "keyword_part"
+        }
       }
     },
     "keyword": {
@@ -639,6 +777,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "cascade"
+        },
+        {
+          "type": "SYMBOL",
           "name": "primary"
         }
       ]
@@ -662,6 +804,36 @@
     [
       "temporaries",
       "temporaries"
+    ],
+    [
+      "unary_message",
+      "binary_message",
+      "cascade",
+      "cascaded_binary"
+    ],
+    [
+      "cascade"
+    ],
+    [
+      "keyword_message",
+      "cascaded_binary"
+    ],
+    [
+      "keyword_message",
+      "cascaded_keyword",
+      "cascade"
+    ],
+    [
+      "keyword_message",
+      "cascaded_keyword"
+    ],
+    [
+      "keyword_message",
+      "cascade",
+      "cascaded_binary"
+    ],
+    [
+      "cascaded_keyword"
     ]
   ],
   "precedences": [],
