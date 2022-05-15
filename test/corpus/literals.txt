@@ -29,7 +29,7 @@ String
 =================
 test
 
-    'abc'
+    'abc def'
 ---
 
 (method
