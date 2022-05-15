@@ -11,7 +11,7 @@ test
     (statement
         (cascade
             (unary_message (identifier) (identifier))
-            (unary_message (identifier)))))
+            (cascaded_unary_message (identifier)))))
 
 =================
 Cascade to Binary Messages
@@ -26,7 +26,7 @@ test
     (statement
         (cascade
             (binary_message (identifier) (binary_operator) (number))
-            (binary_message (binary_operator) (number)))))
+            (cascaded_binary_message (binary_operator) (number)))))
 
 =================
 Cascade to Keyword Messages
@@ -43,7 +43,7 @@ test
     (statement
         (cascade
             (keyword_message (identifier) (keyword) (number))
-            (keyword_message (keyword) (number) (keyword) (number)))))
+            (cascaded_keyword_message (keyword) (number) (keyword) (number)))))
 
 =================
 Cascade to Many Keyword Messages
@@ -62,7 +62,7 @@ test
     (statement
         (cascade
             (keyword_message (identifier) (keyword) (number))
-            (keyword_message (keyword) (number) (keyword) (number))
-            (keyword_message (keyword) (number) (keyword) (number))
-            (keyword_message (keyword) (number)))))
+            (cascaded_keyword_message (keyword) (number) (keyword) (number))
+            (cascaded_keyword_message (keyword) (number) (keyword) (number))
+            (cascaded_keyword_message (keyword) (number)))))
 

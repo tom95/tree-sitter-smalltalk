@@ -138,7 +138,7 @@
     "fields": {
       "receiver": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "expression",
@@ -239,15 +239,68 @@
       "required": true,
       "types": [
         {
-          "type": "binary_message",
+          "type": "cascaded_binary_message",
           "named": true
         },
         {
-          "type": "keyword_message",
+          "type": "cascaded_keyword_message",
           "named": true
         },
         {
-          "type": "unary_message",
+          "type": "cascaded_unary_message",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cascaded_binary_message",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_operator",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cascaded_keyword_message",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cascaded_unary_message",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -274,7 +327,7 @@
     "fields": {
       "receiver": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "expression",
@@ -420,7 +473,7 @@
     "fields": {
       "receiver": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "expression",

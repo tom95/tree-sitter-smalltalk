@@ -43,13 +43,13 @@ module.exports = grammar({
 
     cascade: ($) => prec(-2, seq(field('receiver', $.expression), repeat1(seq(';', $._cascaded_send)))),
     _cascaded_send: ($) => choice(
-      alias($.cascaded_unary, $.unary_message),
-      alias($.cascaded_binary, $.binary_message),
-      alias($.cascaded_keyword, $.keyword_message),
+      $.cascaded_unary_message,
+      $.cascaded_binary_message,
+      $.cascaded_keyword_message,
     ),
-    cascaded_unary: ($) => prec(-2, $.identifier),
-    cascaded_binary: ($) => prec(-3, seq($.binary_operator, $.expression)),
-    cascaded_keyword: ($) => prec(-4, repeat1($.keyword_part)),
+    cascaded_unary_message: ($) => prec(-2, $.identifier),
+    cascaded_binary_message: ($) => prec(-3, seq($.binary_operator, $.expression)),
+    cascaded_keyword_message: ($) => prec(-4, repeat1($.keyword_part)),
 
     keyword: ($) => /[A-Za-z_]+:/,
     // TODO: base should determine valid digits (need custom scanner)

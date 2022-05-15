@@ -287,35 +287,20 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "cascaded_unary"
-          },
-          "named": true,
-          "value": "unary_message"
+          "type": "SYMBOL",
+          "name": "cascaded_unary_message"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "cascaded_binary"
-          },
-          "named": true,
-          "value": "binary_message"
+          "type": "SYMBOL",
+          "name": "cascaded_binary_message"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "cascaded_keyword"
-          },
-          "named": true,
-          "value": "keyword_message"
+          "type": "SYMBOL",
+          "name": "cascaded_keyword_message"
         }
       ]
     },
-    "cascaded_unary": {
+    "cascaded_unary_message": {
       "type": "PREC",
       "value": -2,
       "content": {
@@ -323,7 +308,7 @@
         "name": "identifier"
       }
     },
-    "cascaded_binary": {
+    "cascaded_binary_message": {
       "type": "PREC",
       "value": -3,
       "content": {
@@ -340,7 +325,7 @@
         ]
       }
     },
-    "cascaded_keyword": {
+    "cascaded_keyword_message": {
       "type": "PREC",
       "value": -4,
       "content": {
