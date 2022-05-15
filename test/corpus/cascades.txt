@@ -10,8 +10,7 @@ test
     (unary_selector (identifier))
     (statement
         (cascade
-            (identifier)
-            (unary_message (identifier))
+            (unary_message (identifier) (identifier))
             (unary_message (identifier)))))
 
 =================
@@ -26,8 +25,7 @@ test
     (unary_selector (identifier))
     (statement
         (cascade
-            (identifier)
-            (binary_message (binary_operator) (number))
+            (binary_message (identifier) (binary_operator) (number))
             (binary_message (binary_operator) (number)))))
 
 =================
@@ -44,7 +42,27 @@ test
     (unary_selector (identifier))
     (statement
         (cascade
-            (identifier)
-            (keyword_message (keyword) (number))
+            (keyword_message (identifier) (keyword) (number))
             (keyword_message (keyword) (number) (keyword) (number)))))
+
+=================
+Cascade to Many Keyword Messages
+=================
+test
+
+    test
+        with: 5;
+        with: 6 and: 7;
+        abc: 42 def: 34;
+        wer: 12
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+        (cascade
+            (keyword_message (identifier) (keyword) (number))
+            (keyword_message (keyword) (number) (keyword) (number))
+            (keyword_message (keyword) (number) (keyword) (number))
+            (keyword_message (keyword) (number)))))
 

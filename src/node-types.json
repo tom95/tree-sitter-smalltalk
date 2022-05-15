@@ -512,6 +512,10 @@
     "named": true
   },
   {
+    "type": "comment",
+    "named": true
+  },
+  {
     "type": "false",
     "named": true
   },

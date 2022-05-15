@@ -8,16 +8,18 @@ module.exports = grammar({
     [$.keyword_message, $.keyword_message],
     [$.temporaries, $.primary],
     [$.temporaries, $.temporaries],
-    [$.unary_message, $.binary_message, $.cascade, $.cascaded_binary],
-    [$.cascade],
-    [$.keyword_message, $.cascaded_binary],
-    [$.keyword_message, $.cascaded_keyword, $.cascade],
-    [$.keyword_message, $.cascaded_keyword],
-    [$.keyword_message, $.cascade, $.cascaded_binary],
-    [$.cascaded_keyword],
+    // [$.binary_message, $.unary_message, $.cascade],
+    // [$.unary_message, $.binary_message, $.cascade, $.cascaded_binary],
+    // [$.cascade],
+    // [$.keyword_message, $.cascaded_binary],
+    // [$.keyword_message, $.cascaded_keyword, $.cascade],
+    // [$.keyword_message, $.cascaded_keyword],
+    // [$.keyword_message, $.cascade, $.cascaded_binary],
+    // [$.cascaded_keyword],
   ],
   inline: ($) => [$.keyword_part],
   word: ($) => $.keyword,
+  extras: ($) => [$.comment, /[\s]/],
 
   rules: {
     method: ($) =>
@@ -31,22 +33,23 @@ module.exports = grammar({
     binary_selector: ($) => seq($.binary_operator, $.identifier),
     keyword_selector: ($) => repeat1(seq($.keyword, $.identifier)),
 
-    unary_message: ($) => prec(3, seq(field('receiver', $.expression), $.identifier)),
+    unary_message: ($) => prec(4, seq(field('receiver', $.expression), $.identifier)),
     binary_message: ($) =>
       prec.left(3, seq(field('receiver', $.expression), $.binary_operator, $.expression)),
     keyword_message: ($) =>
-      prec.dynamic(-1, seq(field('receiver', $.expression), repeat1($.keyword_part))),
+      prec(-1, seq(field('receiver', $.expression), repeat1($.keyword_part))),
     keyword_part: ($) => seq($.keyword, $.expression),
-    assignment: ($) => prec.left(-2, seq($.identifier, ":=", $.expression)),
+    assignment: ($) => prec.left(-10, seq($.identifier, ":=", $.expression)),
 
-    cascade: ($) => prec.dynamic(-1, seq(field('receiver', $.expression), sep1(choice(
+    cascade: ($) => prec(-2, seq(field('receiver', $.expression), repeat1(seq(';', $._cascaded_send)))),
+    _cascaded_send: ($) => choice(
       alias($.cascaded_unary, $.unary_message),
       alias($.cascaded_binary, $.binary_message),
       alias($.cascaded_keyword, $.keyword_message),
-    ), ';'))),
-    cascaded_unary: ($) => $.identifier,
-    cascaded_binary: ($) => seq($.binary_operator, $.expression),
-    cascaded_keyword: ($) => prec.dynamic(-1, repeat1($.keyword_part)),
+    ),
+    cascaded_unary: ($) => prec(-2, $.identifier),
+    cascaded_binary: ($) => prec(-3, seq($.binary_operator, $.expression)),
+    cascaded_keyword: ($) => prec(-4, repeat1($.keyword_part)),
 
     keyword: ($) => /[A-Za-z_]+:/,
     // TODO: base should determine valid digits (need custom scanner)
@@ -117,6 +120,8 @@ module.exports = grammar({
         $.cascade,
         $.primary
       ),
+
+    comment: ($) => token(seq("\"", /[^"]*/, "\"")),
   },
 });
 

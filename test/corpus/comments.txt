@@ -1,0 +1,26 @@
+=================
+Single-line Comment
+=================
+highlightQuery
+	" https://github.com/smalltalk/blob/master/src/queries/highlights.scm "
+
+	123
+---
+
+(method (unary_selector (identifier))
+	(comment)
+	(statement (number)))
+
+=================
+Multi-line Comment
+=================
+highlightQuery
+	123. "a
+b
+c" 234
+---
+
+(method (unary_selector (identifier))
+	(statement (number))
+	(comment)
+	(statement (number)))

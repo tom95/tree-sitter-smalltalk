@@ -44,7 +44,7 @@ test
             (keyword) (identifier))))
 
 =================
-Unary in Binary
+Unary in Binary, unary last
 =================
 test
 
