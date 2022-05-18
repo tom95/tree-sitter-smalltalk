@@ -1,0 +1,27 @@
+=================
+Simple pragma
+=================
+test
+
+    <abc>
+---
+
+(method
+    (unary_selector (identifier))
+    (pragma (unary_selector)))
+
+=================
+Keyword pragma
+=================
+test
+
+    <abc: 12 def: #(test abc) hello: 'a'>
+---
+
+(method
+    (unary_selector (identifier))
+    (pragma (keyword_selector
+		(keyword) (number)
+		(keyword) (literal_array (symbol) (symbol))
+		(keyword) (string))))
+

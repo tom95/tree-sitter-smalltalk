@@ -67,3 +67,41 @@ test
     (statement
             (byte_array (number) (number) (number))))
 
+=================
+Multiple Elements in Literal Array
+=================
+test
+
+    #(1 a b 'test')
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+            (literal_array (number) (symbol) (symbol) (string))))
+
+=================
+Nested Elements in Literal Array
+=================
+test
+
+    #(1 (a b) #('test'))
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+            (literal_array (number) (literal_array (symbol) (symbol)) (literal_array (string)))))
+
+=================
+Dot in Literal Array
+=================
+test
+
+    #(. + ^ :=)
+---
+
+(method
+    (unary_selector (identifier))
+    (statement
+            (literal_array (symbol) (symbol) (symbol) (symbol))))

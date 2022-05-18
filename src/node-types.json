@@ -58,6 +58,10 @@
         "named": true
       },
       {
+        "type": "literal_array",
+        "named": true
+      },
+      {
         "type": "nil",
         "named": true
       },
@@ -371,6 +375,49 @@
     }
   },
   {
+    "type": "literal_array",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "false",
+          "named": true
+        },
+        {
+          "type": "literal_array",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "true",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "method",
     "named": true,
     "fields": {},
@@ -510,6 +557,10 @@
   },
   {
     "type": "#",
+    "named": false
+  },
+  {
+    "type": "#(",
     "named": false
   },
   {
