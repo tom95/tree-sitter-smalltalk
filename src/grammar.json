@@ -628,7 +628,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
-                "name": "_nested_array_literal"
+                "name": "nested_array_literal"
               },
               "named": true,
               "value": "literal_array"
@@ -641,7 +641,7 @@
         }
       ]
     },
-    "_nested_array_literal": {
+    "nested_array_literal": {
       "type": "SEQ",
       "members": [
         {

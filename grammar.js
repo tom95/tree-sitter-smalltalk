@@ -85,9 +85,9 @@ module.exports = grammar({
       alias(':=', $.symbol),
       alias('^', $.symbol),
       alias($.identifier, $.symbol),
-      choice(alias($._nested_array_literal, $.literal_array), $.literal_array),
+      choice(alias($.nested_array_literal, $.literal_array), $.literal_array),
     ),
-    _nested_array_literal: ($) => seq('(', repeat($._literal_array_element), ')'),
+    nested_array_literal: ($) => seq('(', repeat($._literal_array_element), ')'),
     parenthesized_expression: ($) => seq("(", $.expression, ")"),
 
     block_argument: ($) => /:[A-Za-z_]+/,
