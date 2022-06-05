@@ -1,107 +1,135 @@
-=================
+================================================================================
 Empty dynamic
-=================
+================================================================================
 test
 
     {}
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-            (dynamic_array)))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (dynamic_array)))
 
-
-=================
+================================================================================
 Single Element in Dynamic
-=================
+================================================================================
 test
 
     {a}
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-            (dynamic_array (identifier))))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (dynamic_array
+      (identifier))))
 
-
-=================
+================================================================================
 Multiple Elements in Dynamic
-=================
+================================================================================
 test
 
     {a. b. c}
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-            (dynamic_array (identifier) (identifier) (identifier))))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (dynamic_array
+      (identifier)
+      (identifier)
+      (identifier))))
 
-
-=================
+================================================================================
 Multiple Elements in Dynamic with trailing dot
-=================
+================================================================================
 test
 
     {a. b. c.}
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-            (dynamic_array (identifier) (identifier) (identifier))))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (dynamic_array
+      (identifier)
+      (identifier)
+      (identifier))))
 
-
-=================
+================================================================================
 Multiple Elements in Byte Array
-=================
+================================================================================
 test
 
     #[2 5 6]
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-            (byte_array (number) (number) (number))))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (byte_array
+      (number)
+      (number)
+      (number))))
 
-=================
+================================================================================
 Multiple Elements in Literal Array
-=================
+================================================================================
 test
 
     #(1 a b 'test')
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-            (literal_array (number) (symbol) (symbol) (string))))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (literal_array
+      (number)
+      (symbol)
+      (symbol)
+      (string))))
 
-=================
+================================================================================
 Nested Elements in Literal Array
-=================
+================================================================================
 test
 
     #(1 (a b) #('test'))
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-            (literal_array (number) (literal_array (symbol) (symbol)) (literal_array (string)))))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (literal_array
+      (number)
+      (literal_array
+        (symbol)
+        (symbol))
+      (literal_array
+        (string)))))
 
-=================
+================================================================================
 Dot in Literal Array
-=================
+================================================================================
 test
 
     #(. + ^ :=)
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-            (literal_array (symbol) (symbol) (symbol) (symbol))))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (literal_array
+      (symbol)
+      (symbol)
+      (symbol)
+      (symbol))))

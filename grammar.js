@@ -23,17 +23,17 @@ module.exports = grammar({
 
   rules: {
     method: ($) =>
-      seq($.selector, optional($.temporaries), sep(optional($.statement), ".")),
+      seq($.selector, optional($.temporaries), repeat($.pragma), sep(optional($.statement), ".")),
 
     temporaries: ($) => prec.dynamic(10, seq("|", repeat($.identifier), "|")),
 
     selector: ($) =>
       choice($.unary_selector, $.binary_selector, $.keyword_selector),
-    unary_selector: ($) => $.identifier,
+    unary_selector: ($) => alias($.identifier, $.unary_identifier),
     binary_selector: ($) => seq($.binary_operator, $.identifier),
     keyword_selector: ($) => repeat1(seq($.keyword, $.identifier)),
 
-    unary_message: ($) => prec(4, seq(field('receiver', $.expression), $.identifier)),
+    unary_message: ($) => prec(4, seq(field('receiver', $.expression), alias($.identifier, $.unary_identifier))),
     binary_message: ($) =>
       prec.left(3, seq(field('receiver', $.expression), $.binary_operator, $.expression)),
     keyword_message: ($) =>
@@ -137,6 +137,12 @@ module.exports = grammar({
         $.cascade,
         $.primary
       ),
+
+    pragma: ($) => seq('<', choice($.pragma_unary_selector, $.pragma_binary_selector, $.pragma_keyword_selector), '>'),
+    pragma_unary_selector: ($) => alias($.identifier, $.unary_identifier),
+    pragma_binary_selector: ($) => seq($.binary_operator, $.expression),
+    pragma_keyword_selector: ($) => repeat1(seq($.keyword, $.expression)),
+
 
     comment: ($) => token(seq("\"", /[^"]*/, "\"")),
   },

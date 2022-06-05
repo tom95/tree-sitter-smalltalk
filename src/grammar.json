@@ -22,6 +22,13 @@
           ]
         },
         {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "pragma"
+          }
+        },
+        {
           "type": "CHOICE",
           "members": [
             {
@@ -114,8 +121,13 @@
       ]
     },
     "unary_selector": {
-      "type": "SYMBOL",
-      "name": "identifier"
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "identifier"
+      },
+      "named": true,
+      "value": "unary_identifier"
     },
     "binary_selector": {
       "type": "SEQ",
@@ -161,8 +173,13 @@
             }
           },
           {
-            "type": "SYMBOL",
-            "name": "identifier"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            "named": true,
+            "value": "unary_identifier"
           }
         ]
       }
@@ -880,6 +897,74 @@
           "name": "primary"
         }
       ]
+    },
+    "pragma": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "pragma_unary_selector"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "pragma_binary_selector"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "pragma_keyword_selector"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        }
+      ]
+    },
+    "pragma_unary_selector": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "identifier"
+      },
+      "named": true,
+      "value": "unary_identifier"
+    },
+    "pragma_binary_selector": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "binary_operator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        }
+      ]
+    },
+    "pragma_keyword_selector": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "keyword"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
     },
     "comment": {
       "type": "TOKEN",

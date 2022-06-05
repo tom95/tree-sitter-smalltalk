@@ -1,102 +1,115 @@
-=================
+================================================================================
 Block with one statement
-=================
+================================================================================
 test
 
     [a]
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-        (block
-            (statement (identifier)))))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (block
+      (statement
+        (identifier)))))
 
-
-=================
+================================================================================
 Block with arguments
-=================
+================================================================================
 test
 
     [:a :b | a]
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-        (block
-            (block_argument)
-            (block_argument)
-            (statement (identifier)))))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (block
+      (block_argument)
+      (block_argument)
+      (statement
+        (identifier)))))
 
-
-=================
+================================================================================
 Block with arguments and temporaries
-=================
+================================================================================
 test
 
     [:a :b | |a b| a]
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-        (block
-            (block_argument)
-            (block_argument)
-            (temporaries (identifier) (identifier))
-            (statement (identifier)))))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (block
+      (block_argument)
+      (block_argument)
+      (temporaries
+        (identifier)
+        (identifier))
+      (statement
+        (identifier)))))
 
-
-=================
+================================================================================
 Block with temporaries
-=================
+================================================================================
 test
 
     [|a b| a]
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-        (block
-            (temporaries (identifier) (identifier))
-            (statement (identifier)))))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (block
+      (temporaries
+        (identifier)
+        (identifier))
+      (statement
+        (identifier)))))
 
-
-=================
+================================================================================
 Block with temporaries and pipe operator
-=================
+================================================================================
 test
 
     [|a b| a | b]
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-        (block
-            (temporaries (identifier) (identifier))
-            (statement (binary_message
-                (identifier)
-                (binary_operator)
-                (identifier))))))
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (block
+      (temporaries
+        (identifier)
+        (identifier))
+      (statement
+        (binary_message
+          (identifier)
+          (binary_operator)
+          (identifier))))))
 
-
-=================
+================================================================================
 Block with multiple statements
-=================
+================================================================================
 test
 
     [a. b. c.]
----
+--------------------------------------------------------------------------------
 
 (method
-    (unary_selector (identifier))
-    (statement
-        (block
-            (statement (identifier))
-            (statement (identifier))
-            (statement (identifier))
-            )))
-
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (block
+      (statement
+        (identifier))
+      (statement
+        (identifier))
+      (statement
+        (identifier)))))

@@ -426,6 +426,10 @@
       "required": true,
       "types": [
         {
+          "type": "pragma",
+          "named": true
+        },
+        {
           "type": "selector",
           "named": true
         },
@@ -450,6 +454,82 @@
       "types": [
         {
           "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pragma",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "pragma_binary_selector",
+          "named": true
+        },
+        {
+          "type": "pragma_keyword_selector",
+          "named": true
+        },
+        {
+          "type": "pragma_unary_selector",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pragma_binary_selector",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_operator",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pragma_keyword_selector",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pragma_unary_selector",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "unary_identifier",
           "named": true
         }
       ]
@@ -534,7 +614,7 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "unary_identifier",
           "named": true
         }
       ]
@@ -549,7 +629,7 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "unary_identifier",
           "named": true
         }
       ]
@@ -589,6 +669,14 @@
   },
   {
     "type": ";",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": ">",
     "named": false
   },
   {
@@ -653,6 +741,10 @@
   },
   {
     "type": "true",
+    "named": true
+  },
+  {
+    "type": "unary_identifier",
     "named": true
   },
   {

@@ -7,8 +7,8 @@ test
 ---
 
 (method
-    (unary_selector (identifier))
-    (pragma (unary_selector)))
+    (unary_selector (unary_identifier))
+    (pragma (pragma_unary_selector (unary_identifier))))
 
 =================
 Keyword pragma
@@ -19,9 +19,9 @@ test
 ---
 
 (method
-    (unary_selector (identifier))
-    (pragma (keyword_selector
-		(keyword) (number)
-		(keyword) (literal_array (symbol) (symbol))
-		(keyword) (string))))
+    (unary_selector (unary_identifier))
+    (pragma (pragma_keyword_selector
+	    (keyword) (number)
+	    (keyword) (literal_array (symbol) (symbol))
+	    (keyword) (string))))
 
