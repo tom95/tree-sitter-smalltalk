@@ -51,7 +51,7 @@ module.exports = grammar({
     cascaded_binary_message: ($) => prec(-3, seq($.binary_operator, $.expression)),
     cascaded_keyword_message: ($) => prec(-4, repeat1($.keyword_part)),
 
-    keyword: ($) => /[A-Za-z_]+:/,
+    keyword: ($) => /[A-Za-z_][A-Za-z0-9_]*:/,
     // TODO: base should determine valid digits (need custom scanner)
     number: ($) => /[0-9]+\.[0-9]+|([0-9]+r)?[0-9]+/,
     string: ($) => seq("'", /[^']*/, "'"),
