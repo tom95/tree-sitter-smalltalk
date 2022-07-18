@@ -54,7 +54,7 @@ module.exports = grammar({
     keyword: ($) => /[A-Za-z_][A-Za-z0-9_]*:/,
     // TODO: base should determine valid digits (need custom scanner)
     number: ($) => /[0-9]+\.[0-9]+|([0-9]+r)?[0-9]+/,
-    string: ($) => seq("'", /[^']*/, "'"),
+    string: ($) => seq("'", /(?:[^']|'')*/, "'"),
     symbol: ($) =>
       seq(
         "#",
