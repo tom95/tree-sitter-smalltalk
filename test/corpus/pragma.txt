@@ -25,3 +25,16 @@ test
 	    (keyword) (literal_array (symbol) (symbol))
 	    (keyword) (string))))
 
+=================
+Multiple pragmas
+=================
+openExplorer
+	<convert>
+	<convertPriority: -1>
+---
+
+(method
+    (unary_selector (unary_identifier))
+    (pragma (pragma_unary_selector (unary_identifier)))
+    (pragma (pragma_keyword_selector (keyword) (number))))
+
