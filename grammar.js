@@ -92,7 +92,7 @@ module.exports = grammar({
     nested_array_literal: ($) => seq('(', repeat($._literal_array_element), ')'),
     parenthesized_expression: ($) => seq("(", $.expression, ")"),
 
-    block_argument: ($) => /:[A-Za-z_][A-Za-z0-9_]*/,
+    block_argument: ($) => /: *[A-Za-z_][A-Za-z0-9_]*/,
     block: ($) =>
       seq(
         "[",

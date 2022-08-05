@@ -686,7 +686,7 @@
     },
     "block_argument": {
       "type": "PATTERN",
-      "value": ":[A-Za-z_]+"
+      "value": ": *[A-Za-z_][A-Za-z0-9_]*"
     },
     "block": {
       "type": "SEQ",

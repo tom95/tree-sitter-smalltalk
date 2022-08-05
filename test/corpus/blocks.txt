@@ -132,3 +132,21 @@ test
       (statement
         (identifier)))))
 
+================================================================================
+Block argument with space
+================================================================================
+test
+
+    [: a2 :  b | a]
+--------------------------------------------------------------------------------
+
+(method
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (block
+      (block_argument)
+      (block_argument)
+      (statement
+        (identifier)))))
+
