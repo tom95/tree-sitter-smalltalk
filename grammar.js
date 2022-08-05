@@ -1,4 +1,4 @@
-const binary_chars = "+\\-/*~<>=@,%|&?!";
+const binary_chars = "-+\\\\/*~<>=@,%|&?!";
 
 module.exports = grammar({
   name: "smalltalk",

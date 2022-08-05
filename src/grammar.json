@@ -390,7 +390,7 @@
           "members": [
             {
               "type": "PATTERN",
-              "value": "[A-Za-z0-9_:]+|[+\\-/*~<>=@,%|&?!]+"
+              "value": "[A-Za-z0-9_:]+|[-+\\\\/*~<>=@,%|&?!]+"
             },
             {
               "type": "SEQ",
@@ -423,7 +423,7 @@
     },
     "binary_operator": {
       "type": "PATTERN",
-      "value": "[+\\-/*~<>=@,%|&?!]+"
+      "value": "[-+\\\\/*~<>=@,%|&?!]+"
     },
     "statement": {
       "type": "CHOICE",

@@ -215,3 +215,21 @@ test
           (identifier)
           (keyword)
           (identifier))))))
+
+================================================================================
+Binary Message Send Backslash
+================================================================================
+test
+
+    abc \ def
+--------------------------------------------------------------------------------
+
+(method
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (binary_message
+      (identifier)
+      (binary_operator)
+      (identifier))))
+
