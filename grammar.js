@@ -20,7 +20,7 @@ module.exports = grammar({
   ],
   inline: ($) => [$.keyword_part],
   word: ($) => $.keyword,
-  extras: ($) => [$.comment, /[\s]/],
+  extras: ($) => [$.comment, /[\s\f]/],
 
   rules: {
     method: ($) =>
@@ -55,7 +55,7 @@ module.exports = grammar({
     keyword: ($) => /[A-Za-z_][A-Za-z0-9_]*:/,
     // TODO: base should determine valid digits (need custom scanner)
     number: ($) => /-?[0-9]+\.[0-9]+|-?([0-9]+r)?[0-9]+/,
-    string: ($) => seq("'", /(?:[^']|'')*/, "'"),
+    string: ($) => seq("'", /([^']|'')*/, "'"),
     symbol: ($) =>
       seq(
         "#",
@@ -92,7 +92,7 @@ module.exports = grammar({
     nested_array_literal: ($) => seq('(', repeat($._literal_array_element), ')'),
     parenthesized_expression: ($) => seq("(", $.expression, ")"),
 
-    block_argument: ($) => /:[A-Za-z_]+/,
+    block_argument: ($) => /:[A-Za-z_][A-Za-z0-9_]*/,
     block: ($) =>
       seq(
         "[",

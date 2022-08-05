@@ -367,7 +367,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "(?:[^']|'')*"
+          "value": "([^']|'')*"
         },
         {
           "type": "STRING",
@@ -1000,7 +1000,7 @@
     },
     {
       "type": "PATTERN",
-      "value": "[\\s]"
+      "value": "[\\s\\f]"
     }
   ],
   "conflicts": [
