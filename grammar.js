@@ -1,4 +1,5 @@
 const binary_chars = "-+\\\\/*~<>=@,%|&?!";
+const symbol_chars = `[A-Za-z0-9_:]+|[${binary_chars}]+`;
 
 module.exports = grammar({
   name: "smalltalk",
@@ -59,7 +60,7 @@ module.exports = grammar({
       seq(
         "#",
         choice(
-          new RegExp(`[A-Za-z0-9_:]+|[${binary_chars}]+`),
+          new RegExp(symbol_chars),
           seq("'", /[^']*/, "'")
         )
       ),
@@ -80,6 +81,7 @@ module.exports = grammar({
       $.nil,
       $.true,
       $.false,
+      alias(new RegExp(symbol_chars), $.symbol),
       alias($.binary_operator, $.symbol),
       alias(/\./, $.symbol),
       alias(':=', $.symbol),

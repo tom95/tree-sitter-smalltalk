@@ -579,6 +579,15 @@
         {
           "type": "ALIAS",
           "content": {
+            "type": "PATTERN",
+            "value": "[A-Za-z0-9_:]+|[-+\\\\/*~<>=@,%|&?!]+"
+          },
+          "named": true,
+          "value": "symbol"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
             "type": "SYMBOL",
             "name": "binary_operator"
           },
