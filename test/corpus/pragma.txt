@@ -38,3 +38,16 @@ openExplorer
     (pragma (pragma_unary_selector (unary_identifier)))
     (pragma (pragma_keyword_selector (keyword) (number))))
 
+=================
+Temporaries after pragmas
+=================
+openExplorer
+	<convertPriority>
+	| a |
+---
+
+(method
+    (unary_selector (unary_identifier))
+    (pragma (pragma_unary_selector (unary_identifier)))
+    (temporaries (identifier)))
+

@@ -24,7 +24,7 @@ module.exports = grammar({
 
   rules: {
     method: ($) =>
-      seq($.selector, optional($.temporaries), repeat($.pragma), sep(optional($.statement), ".")),
+      seq($.selector, repeat(choice($.pragma, $.temporaries)), sep(optional($.statement), ".")),
 
     temporaries: ($) => prec.dynamic(10, seq("|", repeat($.identifier), "|")),
 
