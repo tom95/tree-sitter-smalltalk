@@ -135,7 +135,7 @@ test
       (symbol))))
 
 ================================================================================
-Symbol in Literal Array
+Keyword Symbol in Literal Array
 ================================================================================
 test
 
@@ -147,4 +147,20 @@ test
     (unary_identifier))
   (statement
     (literal_array
+      (symbol))))
+
+================================================================================
+Explicit Symbol in Literal Array
+================================================================================
+test
+
+    #(#color:sees: #a)
+--------------------------------------------------------------------------------
+
+(method
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (literal_array
+      (symbol)
       (symbol))))

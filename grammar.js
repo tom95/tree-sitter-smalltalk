@@ -81,6 +81,7 @@ module.exports = grammar({
       $.nil,
       $.true,
       $.false,
+      $.symbol,
       alias(new RegExp(symbol_chars), $.symbol),
       alias($.binary_operator, $.symbol),
       alias(/\./, $.symbol),
