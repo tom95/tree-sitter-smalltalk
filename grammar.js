@@ -1,5 +1,6 @@
 const binary_chars = "-+\\\\/*~<>=@,%|&?!";
 const symbol_chars = `[A-Za-z0-9_:]+|[${binary_chars}]+`;
+const identifier_regex = /[A-Za-z_][A-Za-z0-9_]*/;
 
 module.exports = grammar({
   name: "smalltalk",
@@ -19,7 +20,7 @@ module.exports = grammar({
     // [$.cascaded_keyword],
   ],
   inline: ($) => [$.keyword_part],
-  word: ($) => $.keyword,
+  word: ($) => $.identifier_or_keyword,
   extras: ($) => [$.comment, /[\s\f]/],
 
   rules: {
@@ -65,8 +66,9 @@ module.exports = grammar({
         )
       ),
     character: ($) => /\$(\s|.)/,
-    identifier: ($) => /[A-Za-z_][A-Za-z0-9_]*/,
+    identifier: ($) => identifier_regex,
     binary_operator: ($) => new RegExp(`[${binary_chars}]+`),
+    identifier_or_keyword: ($) => token(seq(identifier_regex, /:?/)),
 
     statement: ($) => choice($.expression, $.return),
     return: ($) => seq("^", $.expression),
