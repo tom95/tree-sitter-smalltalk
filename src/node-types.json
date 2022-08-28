@@ -570,11 +570,6 @@
     }
   },
   {
-    "type": "string",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "symbol",
     "named": true,
     "fields": {}
@@ -729,6 +724,10 @@
   },
   {
     "type": "self",
+    "named": true
+  },
+  {
+    "type": "string",
     "named": true
   },
   {
