@@ -943,10 +943,6 @@
             },
             {
               "type": "SYMBOL",
-              "name": "pragma_binary_selector"
-            },
-            {
-              "type": "SYMBOL",
               "name": "pragma_keyword_selector"
             }
           ]
@@ -966,19 +962,6 @@
       "named": true,
       "value": "unary_identifier"
     },
-    "pragma_binary_selector": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "binary_operator"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "expression"
-        }
-      ]
-    },
     "pragma_keyword_selector": {
       "type": "REPEAT1",
       "content": {
@@ -990,7 +973,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "expression"
+            "name": "primary"
           }
         ]
       }

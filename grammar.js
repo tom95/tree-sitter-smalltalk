@@ -143,10 +143,9 @@ module.exports = grammar({
         $.primary
       ),
 
-    pragma: ($) => seq('<', choice($.pragma_unary_selector, $.pragma_binary_selector, $.pragma_keyword_selector), '>'),
+    pragma: ($) => seq('<', choice($.pragma_unary_selector, $.pragma_keyword_selector), '>'),
     pragma_unary_selector: ($) => alias($.identifier, $.unary_identifier),
-    pragma_binary_selector: ($) => seq($.binary_operator, $.expression),
-    pragma_keyword_selector: ($) => repeat1(seq($.keyword, $.expression)),
+    pragma_keyword_selector: ($) => repeat1(seq($.keyword, $.primary)),
 
 
     comment: ($) => token(seq("\"", /[^"]*/, "\"")),
