@@ -1,6 +1,5 @@
 {
   "name": "smalltalk",
-  "word": "identifier_or_keyword",
   "rules": {
     "method": {
       "type": "SEQ",
@@ -245,7 +244,7 @@
     },
     "assignment": {
       "type": "PREC_LEFT",
-      "value": -10,
+      "value": -5,
       "content": {
         "type": "SEQ",
         "members": [

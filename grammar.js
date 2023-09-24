@@ -20,7 +20,7 @@ module.exports = grammar({
     // [$.cascaded_keyword],
   ],
   inline: ($) => [$.keyword_part],
-  word: ($) => $.identifier_or_keyword,
+  // word: ($) => $.identifier_or_keyword,
   extras: ($) => [$.comment, /[\s\f]/],
 
   rules: {
@@ -41,7 +41,7 @@ module.exports = grammar({
     keyword_message: ($) =>
       prec(-1, seq(field('receiver', $.expression), repeat1($.keyword_part))),
     keyword_part: ($) => seq($.keyword, $.expression),
-    assignment: ($) => prec.left(-10, seq($.identifier, ":=", $.expression)),
+    assignment: ($) => prec.left(-5, seq($.identifier, ":=", $.expression)),
 
     cascade: ($) => prec(-2, seq(field('receiver', $.expression), repeat1(seq(';', $._cascaded_send)))),
     _cascaded_send: ($) => choice(

@@ -91,3 +91,20 @@ test
         (assignment
           (identifier)
           (identifier))))))
+
+================================================================================
+Assignment no space
+================================================================================
+test
+
+    abc:=def
+--------------------------------------------------------------------------------
+
+(method
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (assignment
+      (identifier)
+      (identifier))))
+
