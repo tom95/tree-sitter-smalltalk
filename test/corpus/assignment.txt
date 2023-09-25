@@ -108,3 +108,18 @@ test
       (identifier)
       (identifier))))
 
+================================================================================
+Assignment after keyword method declaration
+================================================================================
+a: arg
+  x:= a
+--------------------------------------------------------------------------------
+
+(method
+  (unary_selector
+    (unary_identifier))
+  (statement
+    (assignment
+      (identifier)
+      (identifier))))
+
