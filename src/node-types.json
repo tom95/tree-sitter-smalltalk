@@ -547,11 +547,6 @@
     }
   },
   {
-    "type": "symbol",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "temporaries",
     "named": true,
     "fields": {},
@@ -608,19 +603,11 @@
     }
   },
   {
-    "type": "#",
-    "named": false
-  },
-  {
     "type": "#(",
     "named": false
   },
   {
     "type": "#[",
-    "named": false
-  },
-  {
-    "type": "'",
     "named": false
   },
   {
@@ -709,6 +696,10 @@
   },
   {
     "type": "super",
+    "named": true
+  },
+  {
+    "type": "symbol",
     "named": true
   },
   {

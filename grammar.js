@@ -57,14 +57,15 @@ module.exports = grammar({
     // TODO: base should determine valid digits (need custom scanner)
     number: ($) => /-?[0-9]+\.[0-9]+|-?([0-9]+r)?[0-9]+/,
     string: ($) => token(seq("'", /([^']|'')*/, "'")),
-    symbol: ($) =>
+    symbol: ($) => token(
       seq(
         "#",
         choice(
           new RegExp(symbol_chars),
           seq("'", /[^']*/, "'")
         )
-      ),
+      )
+    ),
     character: ($) => /\$(\s|.)/,
     identifier: ($) => identifier_regex,
     binary_operator: ($) => new RegExp(`[${binary_chars}]+`),
