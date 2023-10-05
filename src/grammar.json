@@ -317,8 +317,13 @@
       "type": "PREC",
       "value": -2,
       "content": {
-        "type": "SYMBOL",
-        "name": "identifier"
+        "type": "ALIAS",
+        "content": {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        "named": true,
+        "value": "unary_identifier"
       }
     },
     "cascaded_binary_message": {

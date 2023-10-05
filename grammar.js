@@ -49,7 +49,7 @@ module.exports = grammar({
       $.cascaded_binary_message,
       $.cascaded_keyword_message,
     ),
-    cascaded_unary_message: ($) => prec(-2, $.identifier),
+    cascaded_unary_message: ($) => prec(-2, alias($.identifier, $.unary_identifier)),
     cascaded_binary_message: ($) => prec(-3, seq($.binary_operator, $.expression)),
     cascaded_keyword_message: ($) => prec(-4, repeat1($.keyword_part)),
 
